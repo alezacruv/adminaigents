@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0F1419;
+    color: #F8FAFC;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: #F8FAFC;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  p {
+    line-height: 1.6;
+    color: #94A3B8;
+  }
+  
+  button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+  }
+  
+  input, select, textarea {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #141824;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-button disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base;
+    background-color: #7F4EFF;
+    color: #FFFFFF;
+  }
+  
+  .btn-primary:hover:not(:disabled) {
+    background-color: #6B42E6;
+  }
+  
+  .btn-primary:disabled {
+    background-color: #2D2D3B;
+    color: #94A3B8;
+    opacity: 1;
+  }
+  
+  .btn-secondary {
+    @apply border border-violet-light/30 hover:border-violet-pulse/50 font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg transition-all duration-200 shadow-soft text-sm sm:text-base;
+    background-color: #1ED5A9;
+    color: #FFFFFF;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #1BC299;
+  }
+  
+  .btn-ghost {
+    @apply text-cloud-gray hover:text-light-ice hover:bg-slate-purple/50 font-medium py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 text-sm sm:text-base;
+  }
+  
+  .card {
+    @apply bg-slate-purple border border-violet-light/20 rounded-xl p-4 sm:p-6 shadow-card hover:border-violet-pulse/40 hover:shadow-glow transition-all duration-300;
+  }
+  
+  .card-compact {
+    @apply bg-slate-purple border border-violet-light/20 rounded-lg p-3 sm:p-4 shadow-soft hover:border-violet-pulse/40 transition-all duration-200;
+  }
+  
+  .input-field {
+    @apply w-full bg-deep-slate border border-violet-light/20 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-light-ice placeholder-cloud-gray focus:outline-none focus:border-violet-pulse focus:ring-2 focus:ring-violet-pulse/20 transition-all duration-200 text-sm sm:text-base;
+  }
+  
+  .input-compact {
+    @apply w-full bg-deep-slate border border-violet-light/20 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-light-ice placeholder-cloud-gray focus:outline-none focus:border-violet-pulse transition-colors duration-200 text-sm;
+  }
+  
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm;
+  }
+  
+  .modal-content {
+    @apply bg-slate-purple border border-violet-light/30 rounded-xl p-4 sm:p-6 w-full max-w-2xl mx-4 shadow-glow animate-slide-up;
+  }
+  
+  .status-connected {
+    @apply text-emerald-green;
+  }
+  
+  .status-error {
+    @apply text-coral-red;
+  }
+  
+  .status-disconnected {
+    @apply text-cloud-gray;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-pulse to-teal-glow bg-clip-text text-transparent;
+  }
+  
+  .notification-success {
+    @apply bg-emerald-green text-white shadow-glow;
+  }
+  
+  .notification-error {
+    @apply bg-coral-red text-white shadow-glow;
+  }
+  
+  .notification-info {
+    @apply bg-violet-pulse text-white shadow-glow;
+  }
+  
+  .sidebar-item {
+    @apply w-full flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-xl transition-all duration-200 font-medium text-cloud-gray hover:text-light-ice hover:bg-deep-slate/50 text-sm sm:text-base;
+  }
+  
+  .sidebar-item-active {
+    @apply bg-gradient-to-r from-violet-pulse/20 to-teal-glow/20 text-light-ice border border-violet-pulse/30 shadow-glow;
+  }
+  
+  /* Custom scrollbar for sidebar navigation */
+  .sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .sidebar-nav::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 2px;
+  }
+  
+  .sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+  
+  .table-header {
+    @apply bg-deep-slate text-cloud-gray font-semibold text-sm uppercase tracking-wide px-6 py-4 border-b border-violet-light/20;
+  }
+  
+  .table-cell {
+    @apply px-6 py-4 text-light-ice border-b border-violet-light/10;
+  }
+  
+  .badge {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
+  
+  .badge-success {
+    @apply bg-emerald-green/20 text-emerald-green;
+  }
+  
+  .badge-error {
+    @apply bg-coral-red/20 text-coral-red;
+  }
+  
+  .badge-warning {
+    @apply bg-amber-alert/20 text-amber-alert;
+  }
+  
+  .badge-info {
+    @apply bg-violet-pulse/20 text-violet-pulse;
+  }
+  
+  .loading-spinner {
+    @apply w-5 h-5 border-2 border-violet-pulse/30 border-t-violet-pulse rounded-full animate-spin;
+  }
+  
+  .divider {
+    @apply border-t border-violet-light/20 my-6;
+  }
+  
+  .text-primary {
+    @apply text-light-ice;
+  }
+  
+  .text-secondary {
+    @apply text-cloud-gray;
+  }
+  
+  .text-muted {
+    @apply text-cloud-gray/70;
+  }
+}
